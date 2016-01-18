@@ -10,4 +10,138 @@
     tools:context="udea.edu.co.noisemeter.MainActivity">
 
 
+    <LinearLayout
+        android:id="@+id/lytHeader"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.4"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/logo_udea" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            style="@style/HugeText"
+            android:text="@string/header_txt"
+            android:id="@+id/textView2"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/lytIndicators"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lytHeader"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleY="4"
+            android:progress="0" />
+
+        <TextView
+            android:id="@+id/txtLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Nivel de Ruido"
+            android:layout_below="@id/progressBar"/>
+
+        <TextView
+            android:id="@+id/txtBreakCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Avisos"
+            android:layout_below="@id/txtLevel"/>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/calibrationLayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:paddingTop="40dp"
+        android:layout_below="@id/lytIndicators">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/threshold"
+            android:id="@+id/textView"
+            android:gravity="center"
+            android:textAlignment="center"
+            />
+
+        <LinearLayout
+            android:id="@+id/lytCalibrationButtons"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:text="@string/less_tolerance"
+                android:id="@+id/btnLessTolerance"
+                android:onClick="lessTolerance"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:text="@string/more_tolerance"
+                android:id="@+id/btnMoreTolerance"
+                android:onClick="moreTolerance" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnEndTolerance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_end_tolerance"
+            android:onClick="endCalibrateOptions" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lytButtons"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_txt_start"
+            android:onClick="startAlerting" />
+
+        <Button
+            android:id="@+id/btnStop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_txt_stop"
+            android:onClick="stopAlerting" />
+
+    </LinearLayout>
+
 </RelativeLayout>

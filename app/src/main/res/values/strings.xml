@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">NoiseMeter</string>
+    <string name="btn_txt_start">Comenzar Alertas</string>
+    <string name="btn_txt_stop">Detener Alertas</string>
+    <string name="btn_end_tolerance">Finalizar Calibración</string>
+    <string name="pref_start_service">Iniciar Servicio</string>
+    <string name="pref_kill_service">Detener Servicio</string>
+    <string name="threshold">Calibrar Tolerancia</string>
+    <string name="more_tolerance">Aumentar</string>
+    <string name="less_tolerance">Disminuir</string>
+    <string name="header_txt">Control de Ruido en Bibliotecas</string>
 </resources>
