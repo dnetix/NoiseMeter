@@ -23,6 +23,7 @@ public class SoundService extends IntentService {
     public static final int MSG_START_ALERTING = 5;
     public static final int MSG_STOP_ALERTING = 6;
     public static final int MSG_UPDATE_THRESHOLD = 7;
+    public static final int MSG_UPDATE_ALERTING_STATE = 8;
 
     private static boolean isRunning = false;
 
@@ -46,6 +47,7 @@ public class SoundService extends IntentService {
             switch (msg.what){
                 case MSG_REGISTER_CLIENT:
                     mClient = msg.replyTo;
+                    changeAlertingState(alerting);
                     break;
                 case MSG_UNREGISTER_CLIENT:
                     mClient = null;
@@ -54,10 +56,10 @@ public class SoundService extends IntentService {
                     stop();
                     break;
                 case MSG_START_ALERTING:
-                    alerting = true;
+                    changeAlertingState(true);
                     break;
                 case MSG_STOP_ALERTING:
-                    alerting = false;
+                    changeAlertingState(false);
                     break;
                 case MSG_UPDATE_THRESHOLD:
                     updatePreferences();
@@ -186,8 +188,20 @@ public class SoundService extends IntentService {
         }
     }
 
+    public void changeAlertingState(boolean state){
+        alerting = state;
+        if(mClient != null) {
+            try {
+                Message msg = Message.obtain(null, MSG_UPDATE_ALERTING_STATE, (alerting ? 1 : 0), 0);
+                mClient.send(msg);
+            } catch (Exception e) {
+                mClient = null;
+            }
+        }
+    }
+
     public void stop(){
-        this.listening = false;
+        onDestroy();
     }
 
     public static boolean isRunning(){

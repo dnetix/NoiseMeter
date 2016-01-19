@@ -9,4 +9,7 @@
     <string name="more_tolerance">Aumentar</string>
     <string name="less_tolerance">Disminuir</string>
     <string name="header_txt">Control de Ruido en Bibliotecas</string>
+
+    <string name="alerting_status_on">Monitoreo Activo</string>
+    <string name="alerting_status_off">Monitoreo Inactivo</string>
 </resources>

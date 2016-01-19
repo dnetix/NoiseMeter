@@ -27,6 +27,7 @@ import java.math.BigDecimal;
 public class MainActivity extends AppCompatActivity {
 
     private TextView txtLevel;
+    private TextView txtAlertStatus;
     private TextView txtBreakCount;
     private ProgressBar progressBar;
 
@@ -74,9 +75,22 @@ public class MainActivity extends AppCompatActivity {
                     txtBreakCount.setText(String.valueOf(msg.arg1));
                     updateProgressFromDB(amp);
                     break;
+                case SoundService.MSG_UPDATE_ALERTING_STATE:
+                    updateAlertingState(msg.arg1);
+                    break;
                 default:
                     super.handleMessage(msg);
             }
+        }
+    }
+
+    private void updateAlertingState(int state) {
+        if(state == 1){
+            txtAlertStatus.setText(R.string.alerting_status_on);
+            txtAlertStatus.setTextColor(Color.GREEN);
+        }else{
+            txtAlertStatus.setText(R.string.alerting_status_off);
+            txtAlertStatus.setTextColor(Color.GRAY);
         }
     }
 
@@ -85,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txtLevel = (TextView) findViewById(R.id.txtLevel);
+        txtAlertStatus = (TextView) findViewById(R.id.txtAlertStatus);
         txtBreakCount = (TextView) findViewById(R.id.txtBreakCount);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setProgress(0);
